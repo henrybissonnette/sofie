@@ -1,0 +1,35 @@
+{
+  "name": "sofie",
+  "version": "0.0.0",
+  "description": "A service oriented framework for web applications.",
+  "main": "lib/module.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/henrybissonnette/sophie.git"
+  },
+  "keywords": [
+    "web",
+    "framework",
+    "awesomeness",
+    "soa",
+    "generator",
+    "cli"
+  ],
+  "author": "Hank Bissonnette",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/henrybissonnette/sophie/issues"
+  },
+  "bin": {
+    "sofie": "./bin/sofie"
+  },
+  "dependencies": {
+    "nopt": "~2.1.2",
+    "scopedfs": "~0.1.0"
+  },
+  "devDependencies": {
+    "coffee-script-redux": "2.0.0-beta8",
+    "mocha": "~1.14.0",
+    "semver": "~2.2.1"
+  }
+}
