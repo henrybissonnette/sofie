@@ -1,1 +1,0 @@
-exports.sofie = require './sofie'

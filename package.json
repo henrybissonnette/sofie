@@ -5,7 +5,7 @@
   "main": "lib/module.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/henrybissonnette/sophie.git"
+    "url": "https://github.com/henrybissonnette/sofie.git"
   },
   "keywords": [
     "web",
@@ -18,14 +18,16 @@
   "author": "Hank Bissonnette",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/henrybissonnette/sophie/issues"
+    "url": "https://github.com/henrybissonnette/sofie/issues"
   },
   "bin": {
-    "sofie": "./bin/sofie"
+    "sofie": "./bin/sofie.js"
   },
   "dependencies": {
     "nopt": "~2.1.2",
-    "scopedfs": "~0.1.0"
+    "scopedfs": "~0.1.0",
+    "underscore": "*",
+    "mustache": "*"
   },
   "devDependencies": {
     "coffee-script-redux": "2.0.0-beta8",
