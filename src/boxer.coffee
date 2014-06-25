@@ -1,7 +1,6 @@
 fs = require 'fs'
 path = require 'path'
 nopt = require 'nopt'
-mustache = require 'mustache'
 
 app = ->
   proc = if process.argv[0] is 'node' then process.argv[1] else process.argv[0]
@@ -11,33 +10,21 @@ version = ->
   (require '../package.json').version
 
 print = (text) ->
-  baseTemplate = """
-    {{placeholder}}
-        {{appUpper}}
+  console.log """
+            
+    #{app().toUpperCase()}
 
-        {{text}}
+    #{text}
 
-        {{app}} v{{version}}
+    #{app()} v#{version()}
 
   """
-  out = mustache.render baseTemplate,
-    text: text
-    app: app()
-    appUpper: app().toUpperCase()
-    version: version()
-
-  console.log out
 
 help = (commands, location) ->
-  context =
-    summaries: getCommandModule(name, location).summary() for name in commands
-
-  template = """
-    {{#summaries}}
-    {{.}}
-    {{/summaries}}
-  """
-  print mustache.render(template, context)
+  out = ''
+  for name in commands
+    out += "  #{getCommandModule(name, location).summary()} \n"
+  print out
 
 class BoxerModule
   constructor: (@name, {@description, @options, @action, @signature}) ->
@@ -50,23 +37,20 @@ class BoxerModule
     "#{@name}   #{@description}\n"
 
   printDetails: ->
-    template = """
-        {{description}}
+    optionDescriptions = ''
+    for option in @options
+      optionDescriptions += "  #{option.name}   #{option.description}\n"
+
+    print """
+        COMMAND
+
+          #{@name.toUpperCase()} -- #{@description}
 
         OPTIONS
 
-    {{#options}}
-        {{name}}    {{description}}
-    {{/options}}
+        #{optionDescriptions}
 
     """
-    context =
-      app: app().toUpperCase()
-      command: @name.toUpperCase()
-      description: @description
-      options: @options
-
-    print mustache.render(template, context)
 
   optionsNopt: ->
     o = {}
